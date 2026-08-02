@@ -17,20 +17,22 @@ Download the latest version from:
 
 ## Version
 
-**v1.0**
+**v1.1**
 
 ## Features
 
 - Safe, Balanced, and Aggressive performance modes.
 - Disable system animations.
-- Set display refresh rate.
+- Set display refresh rate (validated within 30-165 Hz).
 - Disable battery saving mode.
-- Enable Fixed Performance Mode (if supported).
+- Enable Fixed Performance Mode (Android 12+, if supported).
 - Optimize installed applications.
 - Stop background applications.
 - Disable or restore applications.
 - Enable or disable experimental Vulkan.
 - Restore default settings.
+- Installer-style output with per-stage status ([ OK ] / [FAIL] / [WARN]).
+- Automatic warning if a device manufacturer restricts system settings.
 - Create a log file after execution.
 
 ## Support
@@ -118,8 +120,7 @@ sh /storage/emulated/0/Download/Turbo.sh experimental-vulkan
 ## Disable Vulkan
 
 ```sh
-sh
-/storage/emulated/0/Download/Turbo.sh disable-vulkan
+sh /storage/emulated/0/Download/Turbo.sh disable-vulkan
 ```
 
 ---
@@ -171,22 +172,21 @@ After running the script, the log is saved at:
 # Example Output
 
 ```text
-========================================
-Turbo.sh is starting
+Turbo.sh v1.1
+sonlwonp | Example Device (Example Chipset) | Android 16 | SDK 36
 
-Author  : sonlwonp
-Device  : Example Device
-Chip    : Example Chipset
-RAM     : Example RAM
-Android : Example Version
+Mode: balanced | Target: 90Hz
 
-========================================
-Done
+  Animations .............................. [ OK ]
+  Refresh rate ............................. [ OK ]
+  Power settings ............................ [ OK ]
+  Background limits ......................... [ OK ]
+  Package optimize .......................... [ OK ]
+  Maintenance ................................ [ OK ]
 
-Thank you for trusting and using Turbo.sh
+  18 applied - 0 skipped - 100% complete
 
-========================================
-Log: /sdcard/Turbo.log
+Log written to /sdcard/Turbo.log
 ```
 
 ---
@@ -195,7 +195,7 @@ Log: /sdcard/Turbo.log
 
 - Backup important settings before using.
 - Some commands require ADB Shell permission.
-- Some features may be limited by device manufacturers.
+- Some devices restrict system settings at the OEM level; the script will report this automatically as skipped commands with a manufacturer note.
 - Not all devices support Fixed Performance Mode or experimental Vulkan.
 - Optimization results may vary depending on the device.
 - Do not use Aggressive Mode if your device is unstable.
@@ -203,6 +203,20 @@ Log: /sdcard/Turbo.log
 ---
 
 # Changelog
+
+## v1.1
+
+### Fixed
+- Removed leftover placeholder package `com.example.app` from uninstall/restore lists.
+- Removed redundant duplicate compile call in the package optimizer.
+- Added refresh rate validation (30-165 Hz) with a clear warning instead of silently writing invalid values.
+- Fixed Performance Mode now checks Android SDK >= 31 before calling.
+- Vulkan disable now restores the renderer to `skiagl` instead of an empty string.
+
+### Added
+- Installer-style output: each stage shows one aligned result line ([ OK ] / [FAIL] / [WARN]).
+- Summary line with applied/skipped counts and % complete.
+- Dynamic device-manufacturer warning when any command is skipped.
 
 ## v1.0
 
