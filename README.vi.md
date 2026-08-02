@@ -1,13 +1,13 @@
 # Turbo.sh
 
-🌐 **Ngôn ngữ / Language**
+🌐 **Ngôn ngữ**
 
-- 🇻🇳 Tiếng Việt (Hiện tại)
+- 🇻🇳 **Tiếng Việt (Hiện tại)**
 - 🇺🇸 [English](README.md)
 
 ---
 
-Turbo.sh là một script Shell mã nguồn mở giúp tối ưu hiệu năng Android mà không cần quyền Root. Script hỗ trợ nhiều chế độ tối ưu, chỉnh tần số quét màn hình, quản lý ứng dụng nền, chạy tác vụ bảo trì hệ thống và hỗ trợ Vulkan thử nghiệm thông qua ADB Shell, Brevent hoặc Terminal Emulator.
+Turbo.sh là một tập lệnh Shell mã nguồn mở giúp tối ưu hiệu năng Android mà **không cần Root**. Tập lệnh hỗ trợ nhiều chế độ tối ưu, cấu hình tần số quét màn hình, quản lý ứng dụng chạy nền, bảo trì hệ thống và hỗ trợ Vulkan thử nghiệm thông qua **ADB Shell**, **Brevent** hoặc **Terminal Emulator**.
 
 ## Tải xuống
 
@@ -17,43 +17,45 @@ Tải phiên bản mới nhất tại:
 
 ## Phiên bản
 
-**v1.0**
+**v1.1**
 
 ## Tính năng
 
-- Chế độ Safe, Balanced và Aggressive.
-- Tắt hiệu ứng chuyển động hệ thống.
-- Thiết lập tần số quét màn hình.
+- Chế độ hiệu năng **Safe**, **Balanced** và **Aggressive**.
+- Tắt hiệu ứng động của hệ thống.
+- Thiết lập tần số quét màn hình (được kiểm tra trong khoảng **30–165 Hz**).
 - Tắt chế độ tiết kiệm pin.
-- Bật Fixed Performance Mode (nếu thiết bị hỗ trợ).
-- Tối ưu ứng dụng đã cài đặt.
-- Dừng ứng dụng chạy nền.
+- Bật **Fixed Performance Mode** (Android 12 trở lên, nếu thiết bị hỗ trợ).
+- Tối ưu hóa các ứng dụng đã cài đặt.
+- Dừng các ứng dụng chạy nền.
 - Vô hiệu hóa hoặc khôi phục ứng dụng.
 - Bật hoặc tắt Vulkan thử nghiệm.
 - Khôi phục cài đặt mặc định.
-- Tạo file Log sau khi chạy.
+- Hiển thị kết quả theo kiểu trình cài đặt với trạng thái từng bước (**[ OK ] / [FAIL] / [WARN]**).
+- Tự động cảnh báo nếu nhà sản xuất thiết bị hạn chế thay đổi cài đặt hệ thống.
+- Tạo tệp nhật ký sau khi thực thi.
 
 ## Hỗ trợ
 
 - Android 10 - Android 16.
-- Không yêu cầu Root.
+- Không cần Root.
 - Hỗ trợ ADB Shell, Brevent và Terminal Emulator.
 
 ## Yêu cầu
 
 - Android 10 trở lên.
 - ADB Shell, Brevent hoặc Terminal Emulator.
-- Quyền truy cập bộ nhớ nếu chạy trực tiếp trên điện thoại.
+- Quyền truy cập bộ nhớ nếu chạy trực tiếp trên điện thoại Android.
 
 ---
 
 # Cài đặt
 
-## Chạy trực tiếp trên điện thoại (Không cần PC)
+## Chạy trực tiếp trên điện thoại Android (Không cần máy tính)
 
 1. Tải `Turbo.sh` từ mục Releases.
 
-2. Đặt file vào:
+2. Đặt tệp tại:
 
 ```text
 /storage/emulated/0/Download/Turbo.sh
@@ -63,21 +65,21 @@ Tải phiên bản mới nhất tại:
 
 ---
 
-## Chế độ hoạt động
+# Các chế độ hiệu năng
 
-### Safe Mode (Ổn định)
+## Safe Mode (Ổn định)
 
 ```sh
 sh /storage/emulated/0/Download/Turbo.sh safe 120
 ```
 
-### Balanced Mode (Khuyến nghị)
+## Balanced Mode (Khuyến nghị)
 
 ```sh
 sh /storage/emulated/0/Download/Turbo.sh balanced 120
 ```
 
-### Aggressive Mode (Hiệu năng tối đa)
+## Aggressive Mode (Hiệu năng tối đa)
 
 ```sh
 sh /storage/emulated/0/Download/Turbo.sh aggressive 120 com.tencent.ig
@@ -85,9 +87,9 @@ sh /storage/emulated/0/Download/Turbo.sh aggressive 120 com.tencent.ig
 
 ---
 
-# Lệnh quản lý
+# Các lệnh quản lý ứng dụng
 
-## Dừng ứng dụng nền
+## Dừng ứng dụng chạy nền
 
 ```sh
 sh /storage/emulated/0/Download/Turbo.sh stop-apps
@@ -123,7 +125,7 @@ sh /storage/emulated/0/Download/Turbo.sh disable-vulkan
 
 ---
 
-# Khôi phục mặc định
+# Khôi phục cài đặt mặc định
 
 ```sh
 sh /storage/emulated/0/Download/Turbo.sh restore
@@ -135,7 +137,7 @@ sh /storage/emulated/0/Download/Turbo.sh restore
 
 Tải Android SDK Platform-Tools:
 
-https://developer.android.com/tools/releases/platform-tools?hl=vi
+https://developer.android.com/tools/releases/platform-tools?hl=en
 
 Kiểm tra thiết bị:
 
@@ -143,7 +145,7 @@ Kiểm tra thiết bị:
 adb devices
 ```
 
-Đưa file vào điện thoại:
+Chép tập lệnh:
 
 ```sh
 adb push "%USERPROFILE%\Downloads\Turbo.sh" /sdcard/Turbo.sh
@@ -157,9 +159,9 @@ adb shell sh /sdcard/Turbo.sh balanced 120
 
 ---
 
-# File Log
+# Tệp nhật ký
 
-Sau khi chạy script, log được lưu tại:
+Sau khi chạy, tệp nhật ký được lưu tại:
 
 ```text
 /sdcard/Turbo.log
@@ -170,50 +172,65 @@ Sau khi chạy script, log được lưu tại:
 # Ví dụ kết quả
 
 ```text
-========================================
-Turbo.sh is starting
+Turbo.sh v1.1
+sonlwonp | Example Device (Example Chipset) | Android 16 | SDK 36
 
-Author  : sonlwonp
-Device  : Example Device
-Chip    : Example Chipset
-RAM     : Example RAM
-Android : Example Version
+Mode: balanced | Target: 90Hz
 
-========================================
-Done
+  Animations .............................. [ OK ]
+  Refresh rate ............................. [ OK ]
+  Power settings ............................ [ OK ]
+  Background limits ......................... [ OK ]
+  Package optimize .......................... [ OK ]
+  Maintenance ................................ [ OK ]
 
-Thank you for trusting and using Turbo.sh
+  18 applied - 0 skipped - 100% complete
 
-========================================
-Log: /sdcard/Turbo.log
+Log written to /sdcard/Turbo.log
 ```
 
 ---
 
 # Cảnh báo
 
-- Sao lưu cài đặt quan trọng trước khi sử dụng.
+- Sao lưu các cài đặt quan trọng trước khi sử dụng.
 - Một số lệnh yêu cầu quyền ADB Shell.
-- Một số tính năng có thể bị giới hạn bởi nhà sản xuất.
-- Không phải thiết bị nào cũng hỗ trợ Fixed Performance Mode hoặc Vulkan thử nghiệm.
-- Hiệu quả tối ưu khác nhau tùy thiết bị.
-- Không sử dụng Aggressive Mode nếu thiết bị không ổn định.
+- Một số thiết bị giới hạn thay đổi cài đặt hệ thống ở cấp nhà sản xuất (OEM); tập lệnh sẽ tự động báo các lệnh bị bỏ qua cùng ghi chú về nhà sản xuất.
+- Không phải tất cả thiết bị đều hỗ trợ Fixed Performance Mode hoặc Vulkan thử nghiệm.
+- Hiệu quả tối ưu có thể khác nhau tùy thiết bị.
+- Không nên sử dụng **Aggressive Mode** nếu thiết bị hoạt động không ổn định.
 
 ---
 
-# Changelog
+# Nhật ký thay đổi
+
+## v1.1
+
+### Đã sửa
+
+- Xóa gói mẫu `com.example.app` còn sót lại khỏi danh sách gỡ bỏ/khôi phục.
+- Loại bỏ lệnh biên dịch trùng lặp trong trình tối ưu ứng dụng.
+- Thêm kiểm tra tần số quét hợp lệ (**30–165 Hz**) cùng cảnh báo rõ ràng thay vì ghi giá trị không hợp lệ.
+- Fixed Performance Mode hiện kiểm tra Android **SDK >= 31** trước khi thực thi.
+- Khi tắt Vulkan, trình kết xuất được khôi phục về `skiagl` thay vì để trống.
+
+### Đã thêm
+
+- Hiển thị theo kiểu trình cài đặt: mỗi giai đoạn hiển thị một dòng trạng thái (**[ OK ] / [FAIL] / [WARN]**).
+- Dòng tổng kết hiển thị số lượng thay đổi đã áp dụng, số lượng bỏ qua và tỷ lệ hoàn thành.
+- Cảnh báo động theo nhà sản xuất khi có bất kỳ lệnh nào bị bỏ qua.
 
 ## v1.0
 
 - Phát hành phiên bản đầu tiên.
-- Thêm Safe, Balanced và Aggressive Mode.
-- Thêm tối ưu Android không cần Root.
+- Thêm các chế độ Safe, Balanced và Aggressive.
+- Thêm khả năng tối ưu Android không cần Root.
 - Hỗ trợ ADB Shell, Brevent và Terminal Emulator.
-- Thêm Vulkan thử nghiệm.
+- Thêm hỗ trợ Vulkan thử nghiệm.
 
 ---
 
-# Credits
+# Ghi nhận
 
 Được tạo bởi **sonlwonp**.
 
